@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTasks(tasks);
 
   addButton.addEventListener("click", addTask);
-  taskList.addEventListener("change", handleTaskChange); // Handles status updates and deletions
+  taskList.addEventListener("change", handleTaskChange); // For status updates
+  taskList.addEventListener("click", handleTaskClick); // For delete button clicks
   allTasksButton.addEventListener("click", () => filterTasks("all"));
   pendingTasksButton.addEventListener("click", () => filterTasks("pending"));
   inprogressTasksButton.addEventListener("click", () =>
@@ -63,16 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusSelect = document.createElement("select");
     statusSelect.classList.add("status-select");
     statusSelect.innerHTML = `
-            <option value="pending" ${
-              task.status === "pending" ? "selected" : ""
-            }>Pending</option>
-            <option value="inprogress" ${
-              task.status === "inprogress" ? "selected" : ""
-            }>In Progress</option>
-            <option value="completed" ${
-              task.status === "completed" ? "selected" : ""
-            }>Completed</option>
-        `;
+          <option value="pending" ${
+            task.status === "pending" ? "selected" : ""
+          }>Pending</option>
+          <option value="inprogress" ${
+            task.status === "inprogress" ? "selected" : ""
+          }>In Progress</option>
+          <option value="completed" ${
+            task.status === "completed" ? "selected" : ""
+          }>Completed</option>
+      `;
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-button");
@@ -107,28 +108,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskId = parseInt(listItem.dataset.taskId);
     const taskIndex = tasks.findIndex((task) => task.id === taskId);
 
-    if (taskIndex !== -1) {
-      if (event.target.classList.contains("status-select")) {
-        tasks[taskIndex].status = event.target.value;
-        const taskTextSpan = listItem.querySelector(".task-text");
-        taskTextSpan.classList.remove("pending", "inprogress", "completed");
-        if (tasks[taskIndex].status === "completed") {
-          taskTextSpan.classList.add("completed");
-        }
-        const statusIndicator = listItem.querySelector(
-          ".task-status-indicator"
-        );
-        statusIndicator.className =
-          "task-status-indicator " + tasks[taskIndex].status;
-        statusIndicator.textContent =
-          tasks[taskIndex].status.charAt(0).toUpperCase() +
-          tasks[taskIndex].status.slice(1);
-        saveTasks();
-      } else if (event.target.classList.contains("delete-button")) {
-        tasks = tasks.filter((task) => task.id !== taskId);
-        saveTasks();
-        renderTasks(tasks);
+    if (taskIndex !== -1 && event.target.classList.contains("status-select")) {
+      tasks[taskIndex].status = event.target.value;
+      const taskTextSpan = listItem.querySelector(".task-text");
+      taskTextSpan.classList.remove("pending", "inprogress", "completed");
+      if (tasks[taskIndex].status === "completed") {
+        taskTextSpan.classList.add("completed");
       }
+      const statusIndicator = listItem.querySelector(".task-status-indicator");
+      statusIndicator.className =
+        "task-status-indicator " + tasks[taskIndex].status;
+      statusIndicator.textContent =
+        tasks[taskIndex].status.charAt(0).toUpperCase() +
+        tasks[taskIndex].status.slice(1);
+      saveTasks();
+    }
+  }
+
+  function handleTaskClick(event) {
+    if (event.target.classList.contains("delete-button")) {
+      const listItem = event.target.parentNode;
+      const taskId = parseInt(listItem.dataset.taskId);
+      tasks = tasks.filter((task) => task.id !== taskId);
+      saveTasks();
+      renderTasks(tasks);
     }
   }
 
