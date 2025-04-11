@@ -1,7 +1,19 @@
+/* General Reset and Base Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* More modern font */
     margin: 20px;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #f0f2f0, #e0e0e0);
+    /* Soft gradient background */
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,56 +23,89 @@ body {
 .container {
     background-color: #fff;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    /* More rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    /* Softer, more pronounced shadow */
     width: 90%;
     max-width: 600px;
 }
 
 header h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+    color: #4c566a;
+    /* Muted, professional heading color */
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    /* Larger, more prominent heading */
+    letter-spacing: 1px;
 }
 
 .input-section {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 15px;
+    /* Slightly more spacing */
+    margin-bottom: 25px;
 }
 
 .input-section input[type="text"] {
     flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    padding: 12px;
+    /* Slightly larger padding */
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    /* More rounded input */
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-section input[type="text"]:focus {
+    border-color: #5e81ac;
+    /* Highlight on focus */
+    box-shadow: 0 0 8px rgba(94, 129, 172, 0.2);
 }
 
 .input-section select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
 }
 
 .input-section button {
-    background-color: #007bff;
-    color: white;
+    background-color: #a3be8c;
+    /* Calming green for add button */
+    color: #fff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .input-section button:hover {
-    background-color: #0056b3;
+    background-color: #8fbc8f;
+    /* Darker shade on hover */
+    transform: translateY(-2px);
+    /* Subtle lift on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-section button:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 
 .list-section h2 {
-    color: #333;
-    margin-bottom: 10px;
+    color: #4c566a;
+    /* Muted heading color */
+    margin-bottom: 15px;
+    font-size: 1.5rem;
 }
 
 #task-list {
@@ -71,109 +116,149 @@ header h1 {
 #task-list li {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 15px 0;
+    /* More vertical padding */
     border-bottom: 1px solid #eee;
-    gap: 15px;
+    gap: 20px;
+    /* More spacing between elements */
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 #task-list li:last-child {
     border-bottom: none;
 }
 
+#task-list li:hover {
+    background-color: #f9f9f9;
+    /* Subtle background on hover */
+    transform: scale(1.01);
+    /* Gentle scale on hover */
+}
+
 .task-text {
     flex-grow: 1;
+    font-size: 1.1rem;
+    word-break: break-word;
 }
 
 .task-status-indicator {
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.9em;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
     color: white;
+    font-weight: bold;
 }
 
 .pending {
-    background-color: #ffc107; /* Yellow */
+    background-color: #ffca28;
+    /* Brighter yellow */
 }
 
 .inprogress {
-    background-color: #007bff; /* Blue */
+    background-color: #1e88e5;
+    /* More vibrant blue */
 }
 
 .completed {
-    background-color: #28a745; /* Green */
+    background-color: #43a047;
+    /* Richer green */
     text-decoration: line-through;
-    color: #555;
+    color: #777;
 }
 
 .status-select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 0.9rem;
     cursor: pointer;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.status-select:focus {
+    border-color: #5e81ac;
+    box-shadow: 0 0 5px rgba(94, 129, 172, 0.2);
 }
 
 .delete-button {
-    background-color: #dc3545;
+    background-color: #e53935;
+    /* More prominent red */
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .delete-button:hover {
-    background-color: #c82333;
+    background-color: #d32f2f;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button:active {
+    transform: scale(1);
+    box-shadow: none;
 }
 
 .filter-buttons {
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
-    gap: 10px;
+    gap: 12px;
+    justify-content: center;
+    /* Center the filter buttons */
 }
 
 .filter-buttons button {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
     cursor: pointer;
     background-color: white;
     color: #333;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
 }
 
 .filter-buttons button.active {
-    background-color: #007bff;
+    background-color: #1e88e5;
     color: white;
-    border-color: #007bff;
+    border-color: #1e88e5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .filter-buttons button:hover {
-    background-color: #eee;
+    background-color: #f0f0f0;
 }
 
 .clear-completed {
-    margin-top: 15px;
+    margin-top: 20px;
     text-align: center;
 }
 
 .clear-completed button {
-    padding: 8px 15px;
-    border: 1px solid #dc3545;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border: 1px solid #e53935;
+    border-radius: 6px;
     cursor: pointer;
     background-color: white;
-    color: #dc3545;
+    color: #e53935;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
 }
 
 .clear-completed button:hover {
     background-color: #f44336;
     color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 footer {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
     color: #777;
-    font-size: 0.9em;
+    font-size: 0.8rem;
 }

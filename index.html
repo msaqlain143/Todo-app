@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Advanced Todo App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Order Management</h1>
-        </header>
-        <section class="input-section">
-            <input type="text" id="new-task" placeholder="Add new order...">
-            <select id="task-status">
-                <option value="pending">Pending</option>
-                <option value="inprogress">In Progress</option>
-                <option value="completed">Completed</option>
-            </select>
-            <button id="add-button">Add Order</button>
-        </section>
-        <section class="list-section">
-            <h2>Orders</h2>
-            <ul id="task-list">
-                </ul>
-            <div class="filter-buttons">
-                <button id="all-tasks" class="active">All</button>
-                <button id="pending-tasks">Pending</button>
-                <button id="inprogress-tasks">In Progress</button>
-                <button id="completed-tasks">Completed</button>
-            </div>
-            <div class="clear-completed">
-                <button id="clear-completed-button">Clear Completed</button>
-            </div>
-        </section>
-        <footer>
-            <p>&copy; 2025 Advanced Todo App</p>
-        </footer>
+      <header>
+        <h1>Order Management</h1>
+      </header>
+      <section class="input-section">
+        <input type="text" id="new-task" placeholder="Add new order..." />
+        <select id="task-status">
+          <option value="pending">Pending</option>
+          <option value="inprogress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+        <button id="add-button">Add Order</button>
+      </section>
+      <section class="list-section">
+        <h2>Orders</h2>
+        <ul id="task-list"></ul>
+        <div class="filter-buttons">
+          <button id="all-tasks" class="active">All</button>
+          <button id="pending-tasks">Pending</button>
+          <button id="inprogress-tasks">In Progress</button>
+          <button id="completed-tasks">Completed</button>
+        </div>
+        <div class="clear-completed">
+          <button id="clear-completed-button">Clear Completed</button>
+        </div>
+      </section>
+      <footer>
+        <p>&copy; 2025 Advanced Todo App By Engr Muhammad Saqlain</p>
+      </footer>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
